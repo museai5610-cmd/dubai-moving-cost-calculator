@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dubai Moving Cost Calculator 2026 — by Lucky G Movers</title>
+<meta name="description" content="Free interactive moving cost calculator for Dubai 2026. Estimate your apartment, villa or office move cost in AED. By Lucky G Movers — Dubai movers since 1999.">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; background: #f4f6fb; color: #1a2332; line-height: 1.6; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  header { text-align: center; margin-bottom: 28px; }
+  header .badge { display: inline-block; background: #0b6b4f; color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 12px; }
+  header h1 { font-size: 30px; margin-bottom: 8px; }
+  header p { color: #5b6b82; font-size: 15px; max-width: 560px; margin: 0 auto; }
+  .card { background: #fff; border-radius: 14px; padding: 24px; margin-bottom: 18px; box-shadow: 0 2px 12px rgba(20,40,80,.07); }
+  .card h2 { font-size: 17px; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .card h2 .step { background: #0b6b4f; color: #fff; width: 26px; height: 26px; border-radius: 50%; font-size: 14px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .opts { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .opt { border: 2px solid #e2e8f0; border-radius: 10px; padding: 12px 10px; text-align: center; cursor: pointer; transition: all .15s; font-size: 14px; font-weight: 600; }
+  .opt small { display: block; font-weight: 400; color: #7b8aa0; font-size: 12px; margin-top: 2px; }
+  .opt:hover { border-color: #0b6b4f; }
+  .opt.sel { border-color: #0b6b4f; background: #eef8f3; }
+  .chk { display: flex; align-items: flex-start; gap: 10px; border: 2px solid #e2e8f0; border-radius: 10px; padding: 12px; cursor: pointer; font-size: 14px; margin-bottom: 10px; transition: all .15s; }
+  .chk:hover { border-color: #0b6b4f; }
+  .chk.sel { border-color: #0b6b4f; background: #eef8f3; }
+  .chk input { margin-top: 4px; accent-color: #0b6b4f; }
+  .chk small { display: block; color: #7b8aa0; font-size: 12px; }
+  #result { display: none; text-align: center; }
+  #result .price { font-size: 44px; font-weight: 800; color: #0b6b4f; margin: 8px 0 4px; }
+  #result .range-note { color: #5b6b82; font-size: 14px; margin-bottom: 14px; }
+  #breakdown { text-align: left; font-size: 14px; background: #f8fafc; border-radius: 10px; padding: 14px 18px; margin-bottom: 18px; }
+  #breakdown div { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed #e2e8f0; }
+  #breakdown div:last-child { border-bottom: none; font-weight: 700; }
+  .cta-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
+  .btn { display: inline-block; padding: 13px 26px; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: transform .1s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.wa { background: #25d366; color: #fff; }
+  .btn.site { background: #0b6b4f; color: #fff; }
+  .note { font-size: 12.5px; color: #7b8aa0; margin-top: 14px; }
+  footer { text-align: center; margin-top: 30px; font-size: 13px; color: #7b8aa0; }
+  footer a { color: #0b6b4f; font-weight: 600; }
+  .disclaimer { background: #fff8e6; border: 1px solid #f0dfa8; border-radius: 10px; padding: 14px 16px; font-size: 13px; color: #6b5d2f; margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">Free Tool · 2026 Prices</span>
+    <h1>Dubai Moving Cost Calculator</h1>
+    <p>Get an instant estimate for your apartment, villa or office move in Dubai — based on real 2026 market rates from 25 years of moving experience.</p>
+  </header>
+
+  <div class="disclaimer">
+    Estimates reflect typical Dubai market ranges for 2026. Your exact quote depends on floor levels, access, and item volume — <a href="https://luckygmovers.com/moving-cost-dubai/" target="_blank" rel="noopener" style="color:#0b6b4f;font-weight:600;">see the full 2026 cost guide</a> for details.
+  </div>
+
+  <div class="card">
+    <h2><span class="step">1</span> What are you moving?</h2>
+    <div class="opts" id="propOpts">
+      <div class="opt sel" data-min="600" data-max="900">Studio<small>AED 600 – 900</small></div>
+      <div class="opt" data-min="800" data-max="1200">1-Bedroom<small>AED 800 – 1,200</small></div>
+      <div class="opt" data-min="1200" data-max="2000">2-Bedroom<small>AED 1,200 – 2,000</small></div>
+      <div class="opt" data-min="1800" data-max="2800">3-Bedroom<small>AED 1,800 – 2,800</small></div>
+      <div class="opt" data-min="2500" data-max="4500">Villa<small>AED 2,500 – 4,500</small></div>
+      <div class="opt" data-min="2000" data-max="6000">Office<small>AED 2,000 – 6,000</small></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="step">2</span> Extra services</h2>
+    <label class="chk"><input type="checkbox" id="svcPack" data-min="300" data-max="500"><span>Full packing service<small>All materials + professional packing of everything — AED 300 – 500</small></span></label>
+    <label class="chk"><input type="checkbox" id="svcDismantle" data-min="200" data-max="400"><span>Furniture dismantling &amp; reassembly<small>Beds, wardrobes, dining sets — AED 200 – 400</small></span></label>
+    <label class="chk"><input type="checkbox" id="svcStorage" data-min="400" data-max="800"><span>1 month storage<small>Secure storage between moves — AED 400 – 800 / month</small></span></label>
+  </div>
+
+  <div class="card">
+    <h2><span class="step">3</span> Moving day</h2>
+    <div class="opts" id="dayOpts">
+      <div class="opt sel" data-mult="1">Weekday<small>Sun – Thu · standard rate</small></div>
+      <div class="opt" data-mult="1.15">Weekend<small>Fri – Sat · +15%</small></div>
+    </div>
+  </div>
+
+  <div class="card" id="result">
+    <h2 style="justify-content:center;">Your estimated moving cost</h2>
+    <div class="price" id="priceOut">AED —</div>
+    <div class="range-note">Typical range for your selections · free written quote on request</div>
+    <div id="breakdown"></div>
+    <div class="cta-row">
+      <a class="btn wa" id="waBtn" href="#" target="_blank" rel="noopener">Get Exact Quote on WhatsApp</a>
+      <a class="btn site" href="https://luckygmovers.com/moving-cost-dubai/" target="_blank" rel="noopener">2026 Cost Guide</a>
+    </div>
+    <p class="note">Estimates by <a href="https://luckygmovers.com/" target="_blank" rel="noopener" style="color:#0b6b4f;font-weight:600;">Lucky G Movers</a> — Dubai movers &amp; packers since 1999 · Trade Licence #514271</p>
+  </div>
+
+  <footer>
+    <p>Built by <a href="https://luckygmovers.com/" target="_blank" rel="noopener">Lucky G Movers</a> (Lucky General Land Transport L.L.C.) — movers and packers in Dubai since 1999.<br>
+    Call/WhatsApp <a href="https://wa.me/971545759234" target="_blank" rel="noopener">+971 54 575 9234</a> · Open 24/7</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  var prop = document.querySelector('#propOpts .opt.sel');
+  var day = document.querySelector('#dayOpts .opt.sel');
+
+  function selectSingle(container, el) {
+    container.querySelectorAll('.opt').forEach(function (o) { o.classList.remove('sel'); });
+    el.classList.add('sel');
+  }
+  document.querySelectorAll('#propOpts .opt').forEach(function (el) {
+    el.addEventListener('click', function () { selectSingle(document.getElementById('propOpts'), el); prop = el; calc(); });
+  });
+  document.querySelectorAll('#dayOpts .opt').forEach(function (el) {
+    el.addEventListener('click', function () { selectSingle(document.getElementById('dayOpts'), el); day = el; calc(); });
+  });
+  document.querySelectorAll('.chk input').forEach(function (cb) {
+    cb.addEventListener('change', function () {
+      cb.closest('.chk').classList.toggle('sel', cb.checked);
+      calc();
+    });
+  });
+
+  function fmt(n) { return 'AED ' + Math.round(n).toLocaleString('en-US'); }
+
+  function calc() {
+    var mult = parseFloat(day.dataset.mult);
+    var items = [];
+    var bMin = parseFloat(prop.dataset.min) * mult;
+    var bMax = parseFloat(prop.dataset.max) * mult;
+    items.push([prop.textContent.trim().split('\n')[0] + ' move (base)', bMin, bMax]);
+    document.querySelectorAll('.chk input:checked').forEach(function (cb) {
+      var label = cb.closest('.chk').querySelector('span').childNodes[0].textContent.trim();
+      items.push([label, parseFloat(cb.dataset.min), parseFloat(cb.dataset.max)]);
+    });
+    var tMin = 0, tMax = 0, html = '';
+    items.forEach(function (it) {
+      tMin += it[1]; tMax += it[2];
+      html += '<div><span>' + it[0] + '</span><span>' + fmt(it[1]) + ' – ' + fmt(it[2]) + '</span></div>';
+    });
+    html += '<div><span>Estimated total</span><span>' + fmt(tMin) + ' – ' + fmt(tMax) + '</span></div>';
+    document.getElementById('breakdown').innerHTML = html;
+    document.getElementById('priceOut').textContent = fmt(tMin) + ' – ' + fmt(tMax);
+    document.getElementById('result').style.display = 'block';
+    var msg = encodeURIComponent('Hi Lucky G Movers! I used your moving cost calculator. My estimate: ' + fmt(tMin) + ' - ' + fmt(tMax) + ' for a ' + prop.textContent.trim().split('\n')[0] + ' move. Please send me an exact quote.');
+    document.getElementById('waBtn').href = 'https://wa.me/971545759234?text=' + msg;
+  }
+  calc();
+})();
+</script>
+</body>
+</html>
